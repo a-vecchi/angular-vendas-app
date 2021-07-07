@@ -11,9 +11,11 @@ import { ClientesService } from '../../clientes.service';
 
 export class ClientesformComponent implements OnInit {
 
-  cliente : Cliente;
-  
-  constructor(private service : ClientesService) { 
+  cliente: Cliente;
+  success: boolean = false;
+  errors: String[];
+
+  constructor(private service: ClientesService) {
     this.cliente = new Cliente();
   }
 
@@ -23,9 +25,16 @@ export class ClientesformComponent implements OnInit {
   onSubmit() {
     this.service
       .salvar(this.cliente)
-      .subscribe( response => {
+      .subscribe(response => {
         console.log(response);
-    } )
+        this.success = true;
+        this.errors = null;
+        this.cliente = response;
+      }, errorResponse => {
+        console.log(errorResponse.error.errors);
+        this.success = false;
+        this.errors = (errorResponse.error.errors);
+      })
   }
 
 }
