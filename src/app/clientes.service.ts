@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 import { Cliente } from './clientes/cliente';
+import { environment } from '../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -10,27 +11,28 @@ import { Cliente } from './clientes/cliente';
 
 export class ClientesService {
 
+  apiURL: string = environment.apiURLBase + '/api/clientes';
+
   constructor(private http: HttpClient) {
   }
 
-  salvar(cliente : Cliente) : Observable<Cliente> {
-    return this.http.post<Cliente>('http://localhost:8080/api/clientes', cliente);
+  salvar(cliente: Cliente): Observable<Cliente> {
+    return this.http.post<Cliente>(this.apiURL, cliente);
   }
 
-  atualizar(cliente : Cliente) : Observable<any> {
-    return this.http.put<Cliente>(`http://localhost:8080/api/clientes/${cliente.id}`, cliente);
+  atualizar(cliente: Cliente): Observable<any> {
+    return this.http.put<Cliente>(`${this.apiURL}/${cliente.id}`, cliente);
   }
 
-  getCliente() : Observable<Cliente[]> {
-    return this.http.get<Cliente[]>('http://localhost:8080/api/clientes');
+  getCliente(): Observable<Cliente[]> {
+    return this.http.get<Cliente[]>(this.apiURL);
   }
 
-  getClienteById(id : number) : Observable<Cliente> {
-    return this.http.get<any>(`http://localhost:8080/api/clientes/${id}`);
+  getClienteById(id: number): Observable<Cliente> {
+    return this.http.get<any>(`${this.apiURL}/${id}`);
   }
 
-  deletar(cliente : Cliente) : Observable<any> {
-    return this.http.delete<any>(`http://localhost:8080/api/clientes/${cliente.id}`);
+  deletar(cliente: Cliente): Observable<any> {
+    return this.http.delete<any>(`${this.apiURL}/${cliente.id}`);
   }
-
 }
