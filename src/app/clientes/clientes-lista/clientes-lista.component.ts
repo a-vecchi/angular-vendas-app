@@ -19,7 +19,8 @@ export class ClientesListaComponent implements OnInit {
 
   constructor(
     private service: ClientesService,
-    private router: Router) { }
+    private router: Router) {
+  }
 
   ngOnInit(): void {
     this.service
@@ -41,6 +42,6 @@ export class ClientesListaComponent implements OnInit {
         this.mensagemSucesso = 'Cliente deletado com sucesso!'
         this.ngOnInit();
       },
-      erro => this.mensagemErro = 'Ocorreu um erro ao deletar o cliente.')
+      erro => this.mensagemErro = 'Ocorreu um erro ao deletar o Cliente.')
   }
 }

@@ -6,6 +6,7 @@ import { ServicoPrestadoListaComponent } from './servico-prestado-lista/servico-
 
 const routes: Routes = [
   { path: 'servico-prestado-form', component: ServicoPrestadoFormComponent },
+  { path: 'servico-prestado-form/:id', component: ServicoPrestadoFormComponent },
   { path: 'servico-prestado-listagem', component: ServicoPrestadoListaComponent }
 ];
 
@@ -13,4 +14,6 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class ServicoPrestadoRoutingModule { }
+
+export class ServicoPrestadoRoutingModule { 
+}

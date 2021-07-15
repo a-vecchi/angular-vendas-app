@@ -20,4 +20,6 @@ import { ServicoPrestadoListaComponent } from './servico-prestado-lista/servico-
     ServicoPrestadoFormComponent,
     ServicoPrestadoListaComponent]
 })
-export class ServicoPrestadoModule { }
+
+export class ServicoPrestadoModule {
+}

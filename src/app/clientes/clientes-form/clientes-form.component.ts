@@ -3,7 +3,6 @@ import { Router, ActivatedRoute } from '@angular/router';
 
 import { Cliente } from '../cliente';
 import { ClientesService } from '../../clientes.service';
-import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-clientesform',
@@ -69,7 +68,7 @@ export class ClientesFormComponent implements OnInit {
           this.success = true;
           this.errors = null;
         }, errorResponse => {
-          this.errors = ['Erro ao atualizar o cliente.'];
+          this.errors = ['Erro ao atualizar o Cliente.'];
           console.log(errorResponse);
         })
     } else {
