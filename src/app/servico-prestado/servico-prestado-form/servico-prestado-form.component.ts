@@ -19,7 +19,7 @@ export class ServicoPrestadoFormComponent implements OnInit {
   success: boolean = false;
   errors: String[];
   id: number;
-
+  
   constructor(
     private clienteService: ClientesService,
     private service: ServicoPrestadoService,
@@ -44,36 +44,36 @@ export class ServicoPrestadoFormComponent implements OnInit {
           errorResponse => this.servico = new ServicoPrestado()
         )
     }
-    console.log(params.id)
+    //console.log(params.id)
   }
 
   voltarParaListagem() {
-    this.router.navigate(['/servico-prestado-listagem'])
+    this.router.navigate(['/servico-prestado-listagem']);
   }
 
   onSubmit() {
-    console.log(this.servico);
+    //console.log(this.servico);
     if (this.id) {
       this.service
         .atualizar(this.servico)
         .subscribe(response => {
-          console.log(response);
+          //console.log(response);
           this.success = true;
           this.errors = null;
         }, errorResponse => {
           this.errors = ['Erro ao atualizar o Serviço Prestado.'];
-          console.log(errorResponse);
+          //console.log(errorResponse);
         })
     } else {
       this.service
         .salvar(this.servico)
         .subscribe(response => {
-          console.log(response);
+          //console.log(response);
           this.success = true;
           this.errors = null;
-          this.servico = response;
+          this.servico = new ServicoPrestado();
         }, errorResponse => {
-          console.log(errorResponse.error.errors);
+          //console.log(errorResponse.error.errors);
           this.success = false;
           this.errors = (errorResponse.error.errors);
         })

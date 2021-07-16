@@ -6,11 +6,13 @@ import { RouterModule } from '@angular/router';
 import { ServicoPrestadoRoutingModule } from './servico-prestado-routing.module';
 import { ServicoPrestadoFormComponent } from './servico-prestado-form/servico-prestado-form.component';
 import { ServicoPrestadoListaComponent } from './servico-prestado-lista/servico-prestado-lista.component';
+import { ServicoPrestadoPesquisaComponent } from './servico-prestado-pesquisa/servico-prestado-pesquisa.component';
 
 @NgModule({
   declarations: [
     ServicoPrestadoFormComponent,
-    ServicoPrestadoListaComponent],
+    ServicoPrestadoListaComponent,
+    ServicoPrestadoPesquisaComponent],
   imports: [
     CommonModule,
     ServicoPrestadoRoutingModule,
@@ -18,7 +20,8 @@ import { ServicoPrestadoListaComponent } from './servico-prestado-lista/servico-
     RouterModule
   ], exports: [
     ServicoPrestadoFormComponent,
-    ServicoPrestadoListaComponent]
+    ServicoPrestadoListaComponent,
+    ServicoPrestadoPesquisaComponent]
 })
 
 export class ServicoPrestadoModule {

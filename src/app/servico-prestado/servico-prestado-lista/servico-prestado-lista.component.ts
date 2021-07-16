@@ -35,7 +35,7 @@ export class ServicoPrestadoListaComponent implements OnInit {
   preparaDelecao(servicoPrestado: ServicoPrestado) {
     this.servicoSelecionado = servicoPrestado;
   }
-  
+
   deletarServico() {
     this.service.deletar(this.servicoSelecionado).subscribe(
       response => {
