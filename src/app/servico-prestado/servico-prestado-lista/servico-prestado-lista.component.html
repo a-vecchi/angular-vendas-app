@@ -42,7 +42,7 @@
                         <th>{{ servico.valor }}</th>
                         <th>{{ servico.cliente.nome }}</th>
                         <th>
-                            <button class="btn btn-primary" routerLink="/servico-prestado-form/{{ servico.id }}">
+                            <button class="btn btn-primary" routerLink="servicos-prestados/form/{{ servico.id }}">
                                 <i class="fa fa-edit"></i>
                             </button>
                             <button class="btn btn-danger" (click)="preparaDelecao(servico)" data-toggle="modal"

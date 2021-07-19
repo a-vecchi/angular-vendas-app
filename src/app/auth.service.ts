@@ -1,0 +1,61 @@
+import { HttpClient, HttpParams } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+//import { JwtHelperService } from '@auth0/angular-jwt';
+
+import { Observable } from 'rxjs';
+import { Usuario } from './login/usuario';
+import { environment } from '../environments/environment';
+
+@Injectable({
+  providedIn: 'root'
+})
+
+export class AuthService {
+
+  apiUrl: string = environment.apiURLBase + "/api/usuarios";
+  tokenURL: string = environment.apiURLBase + environment.obterTokenUrl;
+  clientId: string = environment.clientId;
+  clientSecret: string = environment.clientSecret;
+  //jwtHelper: JwtHelperService = new JwtHelperService();
+
+  constructor(
+    private http: HttpClient
+  ) { }
+
+  salvar(usuario: Usuario): Observable<any> {
+    return this.http.post<any>(this.apiUrl, usuario);
+  }
+
+  obterToken() {
+    const tokenString = localStorage.getItem('access_token')
+    if (tokenString) {
+      const token = JSON.parse(tokenString).access_token
+      return token;
+    }
+    return null;
+  }
+
+  encerrarSessao() {
+    localStorage.removeItem('access_token');
+  }
+
+  getUsuarioAutenticado() {
+
+  }
+
+  tentarLogar(username: string, password: string): Observable<any> {
+    const params = new HttpParams()
+      .set('username', username)
+      .set('password', password)
+      .set('grant_type', 'password');
+    console.log(params);
+    
+    const headers = {
+      'Authorization': 'Basic ' + btoa(`${this.clientId}:${this.clientSecret}`),
+      'Content-Type': 'application/x-www-form-urlencoded'
+    }
+    console.log(headers);
+
+    return this.http.post(this.tokenURL, params.toString, { headers });
+  }
+}

@@ -48,7 +48,7 @@ export class ServicoPrestadoFormComponent implements OnInit {
   }
 
   voltarParaListagem() {
-    this.router.navigate(['/servico-prestado-listagem']);
+    this.router.navigate(['/servicos-prestados']);
   }
 
   onSubmit() {

@@ -55,7 +55,7 @@ export class ClientesFormComponent implements OnInit {
   }
 
   voltarParaListagem() {
-    this.router.navigate(['/clientes-lista'])
+    this.router.navigate(['/clientes/lista'])
   }
 
   onSubmit() {
@@ -75,12 +75,12 @@ export class ClientesFormComponent implements OnInit {
       this.service
         .salvar(this.cliente)
         .subscribe(response => {
-          console.log(response);
+          // console.log(response);
           this.success = true;
           this.errors = null;
           this.cliente = response;
         }, errorResponse => {
-          console.log(errorResponse.error.errors);
+          // console.log(errorResponse.error.errors);
           this.success = false;
           this.errors = (errorResponse.error.errors);
         })

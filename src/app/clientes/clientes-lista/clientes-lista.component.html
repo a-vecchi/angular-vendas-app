@@ -40,7 +40,7 @@
                         <th>{{ cliente.cpf }}</th>
                         <th>{{ cliente.dataCadastro }}</th>
                         <th>
-                            <button class="btn btn-primary" routerLink="/clientes-form/{{ cliente.id }}">
+                            <button class="btn btn-primary" routerLink="/clientes/form/{{ cliente.id }}">
                                 <i class="fa fa-edit"></i>
                             </button>
                             <button class="btn btn-danger" (click)="preparaDelecao(cliente)" data-toggle="modal"
