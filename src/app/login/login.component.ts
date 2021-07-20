@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
 import { Usuario } from './usuario';
@@ -51,7 +51,9 @@ export class LoginComponent {
     const usuario: Usuario = new Usuario();
     usuario.username = this.username;
     usuario.password = this.password;
-    this.authService.salvar(usuario).subscribe(responde => {
+    this.authService
+    .salvar(usuario)
+    .subscribe(response => {
       this.mensagemSucesso = "Cadastro realizado com sucesso! Efetue o login.";
       this.errors = null;
       this.cadastrando = false;
@@ -59,7 +61,7 @@ export class LoginComponent {
       this.password = '';
     }, errorResponse => {
       this.mensagemSucesso = null;
-      this.errors = (errorResponse.error.errors);
+      this.errors = errorResponse.error.errors;
     });
   }
 }
