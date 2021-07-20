@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { JwtHelperService } from '@auth0/angular-jwt';
 import { Observable } from 'rxjs';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 import { Usuario } from './login/usuario';
 import { environment } from '../environments/environment';
@@ -47,11 +47,12 @@ export class AuthService {
   isAuthenticated(): boolean {
     const token = this.obterToken();
     if (token) {
-      const expired = this.jwtHelper.isTokenExpired(token)
+      const expired = this.jwtHelper.isTokenExpired(token);
       return !expired;
     }
     return false;
   }
+
   salvar(usuario: Usuario): Observable<any> {
     return this.http.post<any>(this.apiUrl, usuario);
   }
@@ -61,13 +62,13 @@ export class AuthService {
       .set('username', username)
       .set('password', password)
       .set('grant_type', 'password');
-    console.log(params);
+    //console.log(params);
 
     const headers = {
       'Authorization': 'Basic ' + btoa(`${this.clientId}:${this.clientSecret}`),
       'Content-Type': 'application/x-www-form-urlencoded'
     }
-    console.log(headers);
+    //console.log(headers);
 
     return this.http.post(this.tokenURL, params.toString(), { headers });
   }
